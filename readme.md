@@ -11,6 +11,9 @@
   * register: defaults { role: costumer }
   * login
   * recover password
+* profile
+  * show
+  * store
 * musics: roles {
   * crud: manager,
   * list, show: *

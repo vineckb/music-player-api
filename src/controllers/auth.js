@@ -1,13 +1,4 @@
-function UserControllerRouter(router) {
-  router.post('/login', UserController.login);
-  router.get('/login', UserController.oneClickLogin);
-
-  router.post('/register', UserController.oneClickLogin);
-
-  router.get('/forgot-password', UserController.forgotPassword);
-};
-
-const UserController = {
+module.exports = {
   // Simple login by username & password
   login(req, res, next) {
     // do login...
@@ -34,5 +25,3 @@ const UserController = {
     // return ok
   }
 };
-
-module.exports = UserControllerRouter;
