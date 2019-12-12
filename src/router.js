@@ -1,17 +1,11 @@
 const requireContext = require('require-context');
-
-  
-function importAll (r, cb) {
-  r.keys().forEach(fileName => {
-    const name = fileName.split('.')[0];
-    cb(name, r(fileName));
-  });
-}
+const path = require('path');
  
 function router (app) {
+  const context = requireContext(path.join(__dirname, 'controllers'), true, /\.js$/)
 
-  importAll(requireContext('../../src/controllers', true, /\.js$/), (name, load) => {
-    app.use(`/${name}`, load)
+  context.keys().forEach(fileName => {
+    app.use(`/${fileName.split('.')[0]}`, context(fileName))
   });
 }
 
