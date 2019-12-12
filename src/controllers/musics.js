@@ -1,11 +1,9 @@
-const { Router } = require('express');
-const router = Router();
+const Music = require('../models/music');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.send({
-    list: []
-  })
-});
-
-module.exports = router;
+module.exports = router => {
+  router.get('/', function(req, res, next) {
+    Music.find({}, (err, items) => {
+      res.send({ items: items.map(i => i) })
+    })
+  });
+}
