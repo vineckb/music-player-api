@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   // Simple login by username & password
   login(req, res, next) {
     // do login...

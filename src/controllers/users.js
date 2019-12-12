@@ -1,6 +1,6 @@
-const UserModel = require('../models/User');
+import UserModel from '../models/User';
 
-module.exports = {
+export default {
   list(req, res, next) {
     UserModel.find({}, (err, items) => {
       res.send({ items: items.map(i => i) })

@@ -3,7 +3,7 @@
 /**
  * Module dependencies.
  */
-
+require = require('esm')(module)
 var app = require('../src/bootstrap');
 var debug = require('debug')('api:server');
 var http = require('http');

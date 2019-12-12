@@ -1,5 +1,5 @@
-const AuthController = require('../controllers/Auth');
-const express = require('express');
+import AuthController from '../controllers/Auth';
+import express from 'express';
 
 const router = express.Router();
 
@@ -8,4 +8,4 @@ router.get('/login', AuthController.oneClickLogin);
 router.post('/register', AuthController.oneClickLogin);
 router.get('/forgot-password', AuthController.forgotPassword);
 
-module.exports = router;
+export default router;

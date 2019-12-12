@@ -1,6 +1,6 @@
-const UserModel = require('../models/User');
+import UserModel from '../models/User';
 
-module.exports = {
+export default {
   get(req, res, next) {
     // ...
   },
@@ -9,5 +9,3 @@ module.exports = {
     // ...
   },
 };
-
-module.exports = ProfileRouter;

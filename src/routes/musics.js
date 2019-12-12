@@ -1,5 +1,5 @@
-const MusicsController = require('../controllers/Musics');
-const express = require('express');
+import MusicsController from '../controllers/Musics';
+import express from 'express';
 
 const router = express.Router();
 
@@ -9,4 +9,4 @@ router.get('/:id', MusicsController.show);
 router.put('/:id', MusicsController.update);
 router.delete('/:id', MusicsController.delete);
 
-module.exports = router;
+export default router;

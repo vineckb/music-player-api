@@ -1,14 +1,14 @@
-const MusicModel = require('../models/Music');
+import MusicModel from '../models/Music';
 
-module.exports = {
-  list(req, res, next) {
-    MusicModel.find({}, (err, items) => {
-      res.send({ items: items.map(i => i) })
-    })
+export default {
+  async list(req, res, next) {
+    const items = await MusicModel.find({})
+    
+    res.send({items})
   },
 
-  show(req, res, next) {
-    const music = MusicModel.findById(req.params.id);
+  async show(req, res, next) {
+    const music = await MusicModel.findById(req.params.id);
 
     res.send(music);
   },
