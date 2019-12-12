@@ -3,24 +3,22 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const errorHandler = require('express-error-handler');
 
+const database = require('./database');
 const router = require('./router');
-var app = express();
+
+database();
+
+const app = express();
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-router(app);
+app.use(router());
 
-// error handler
-app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.send({
-    message: err.message,
-    error: req.app.get('env') === 'development' ? err : {},
-  });
-});
+app.use(errorHandler());
 
 module.exports = app;
