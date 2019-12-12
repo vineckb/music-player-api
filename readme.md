@@ -10,8 +10,7 @@
 * auth: actions {
   * register: defaults { role: costumer }
   * login
-  * manage account
-  * recover account
+  * recover password
 * musics: roles {
   * crud: manager,
   * list, show: *
