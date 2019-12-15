@@ -1,24 +1,23 @@
-const createError = require('http-errors');
-const express = require('express');
-const path = require('path');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
-const errorHandler = require('express-error-handler');
-
-const database = require('./database');
-const router = require('./router');
+import express from 'express';
+import path from 'path';
+import cors from 'cors';
+import helmet from 'helmet';
+import database from './database';
+import router from './router';
+const morgan = require('morgan');
 
 database();
 
 const app = express();
 
-app.use(logger('dev'));
+app.use(helmet());
+app.use(cors());
+
+app.use(morgan('combined'));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
 
 router(app);
-
-app.use(errorHandler());
 
 module.exports = app;

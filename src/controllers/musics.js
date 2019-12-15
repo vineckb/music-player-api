@@ -2,9 +2,9 @@ import MusicModel from '../models/Music';
 
 export default {
   async list(req, res, next) {
-    const items = await MusicModel.find({})
+    const musics = await MusicModel.find({})
     
-    res.send({items})
+    res.send(musics)
   },
 
   async show(req, res, next) {
@@ -13,8 +13,10 @@ export default {
     res.send(music);
   },
 
-  create(req, res, next) {
-    // ...
+  async create(req, res, next) {
+    const music = await MusicModel.create(req.body);
+
+    res.send(music);
   },
 
   update(req, res, next) {
