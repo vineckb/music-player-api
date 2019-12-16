@@ -1,5 +1,9 @@
-module.exports = {
-  host: 'localhost',
-  port: 27017,
-  database: 'music_player',
-}
+export const host = 'localhost';
+export const port = 27017;
+export const database = 'music_player';
+
+export default {
+  host,
+  port,
+  database,
+};

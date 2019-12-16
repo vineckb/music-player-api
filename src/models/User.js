@@ -1,11 +1,16 @@
 import { Schema, model } from 'mongoose';
+import bcrypt from 'bcrypt';
  
-const schema = {
+const UserSchema = new Schema({
   name: String,
   email: String,
   password: String,
-  role: String,
   avatar: String,
-};
+});
 
-export default model('User', new Schema(schema));
+UserSchema.pre('save', function(next){
+  this.password = bcrypt.hashSync(this.password, 10);
+  next();
+});
+
+export default model('User', UserSchema);

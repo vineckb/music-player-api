@@ -1,25 +1,33 @@
 import UserModel from '../models/User';
 
 export default {
-  list(req, res, next) {
-    UserModel.find({}, (err, items) => {
-      res.send({ items: items.map(i => i) })
-    })
+  async list(req, res, next) {
+    const users = await UserModel.find({});
+
+    res.json(users);
   },
 
-  show(req, res, next) {
-    // ...
+  async show(req, res, next) {
+    const user = await UserModel.findById(req.params.id);
+
+    res.json(user);
   },
 
-  create(req, res, next) {
-    // ...
+  async create(req, res, next) {
+    const user = await UserModel.create(req.body);
+
+    res.json(user);
   },
 
-  update(req, res, next) {
-    // ...
+  async update(req, res, next) {
+    await UserModel.update({ _id: req.params.id }, req.body);
+
+    res.end();
   },
 
-  delete(req, res, next) {
-    // ...
+  async delete(req, res, next) {
+    await UserModel.deleteOne({ _id: req.params.id });
+    
+    res.end();
   },
 };

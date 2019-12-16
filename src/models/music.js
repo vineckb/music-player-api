@@ -6,7 +6,7 @@ const schema = {
   album: String,
   file: String,
   cover: String,
-  time: Number,
+  duration: Number,
 };
 
 export default model('Music', new Schema(schema));

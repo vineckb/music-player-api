@@ -1,8 +1,27 @@
+import UserModel from '../models/User';
+const bcrypt = require('bcrypt'); 
+const jwt = require('jsonwebtoken');
+
 export default {
   // Simple login by username & password
-  login(req, res, next) {
-    // do login...
-    // return { token }
+  async login(req, res, next) {
+    const { email } = req.body;
+    const user = await UserModel.findOne({ email });
+    const match = bcrypt.compareSync(req.body.password, user.password);
+
+    if (!match) {
+      return res.json({
+        status:"error",
+        message: "Invalid email/password!!!"
+      });
+    }
+
+    const payload = { id: user._id };
+    const key = req.app.get('secretKey');
+    const options = { expiresIn: '1h' };
+    const token = jwt.sign(payload, key, );
+
+    res.json({ user, token });
   },
 
   // Validate token and login if success

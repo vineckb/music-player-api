@@ -4,26 +4,29 @@ export default {
   async list(req, res, next) {
     const musics = await MusicModel.find({})
     
-    res.send(musics)
+    res.json(musics)
   },
 
   async show(req, res, next) {
     const music = await MusicModel.findById(req.params.id);
 
-    res.send(music);
+    res.json(music);
   },
 
   async create(req, res, next) {
     const music = await MusicModel.create(req.body);
 
-    res.send(music);
+    res.json(music);
   },
 
-  update(req, res, next) {
-    // ...
+  async update(req, res, next) {
+    await MusicModel.update({ _id: req.params.id }, req.body);
+
+    res.end();
   },
 
-  delete(req, res, next) {
-    // ...
+  async delete(req, res, next) {
+    await MusicModel.deleteOne({ _id: req.params.id });
+    res.end();
   },
 };
