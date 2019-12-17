@@ -1,9 +1,9 @@
-import PlaylistModel from '../models/Playlist';
+import PlaylistModel from '../models/Playlist.js';
 
 export default {
   async list(req, res, next) {
     const playlists = await PlaylistModel.find({});
-    
+
     res.json(playlists);
   },
 

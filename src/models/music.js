@@ -1,5 +1,5 @@
-import { Schema, model } from 'mongoose';
- 
+import mongoose from 'mongoose';
+
 const schema = {
   name: String,
   artist: String,
@@ -9,4 +9,4 @@ const schema = {
   duration: Number,
 };
 
-export default model('Music', new Schema(schema));
+export default mongoose.model('Music', new mongoose.Schema(schema));

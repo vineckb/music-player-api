@@ -1,9 +1,9 @@
-import MusicModel from '../models/Music';
+import MusicModel from '../models/Music.js';
 
 export default {
   async list(req, res, next) {
     const musics = await MusicModel.find({})
-    
+
     res.json(musics)
   },
 

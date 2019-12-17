@@ -1,6 +1,6 @@
-import UserModel from '../models/User';
-const bcrypt = require('bcrypt'); 
-const jwt = require('jsonwebtoken');
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
+import UserModel from '../models/User.js';
 
 export default {
   // Simple login by username & password

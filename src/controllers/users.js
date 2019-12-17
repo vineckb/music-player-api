@@ -1,4 +1,4 @@
-import UserModel from '../models/User';
+import UserModel from '../models/User.js';
 
 export default {
   async list(req, res, next) {
@@ -27,7 +27,7 @@ export default {
 
   async delete(req, res, next) {
     await UserModel.deleteOne({ _id: req.params.id });
-    
+
     res.end();
   },
 };

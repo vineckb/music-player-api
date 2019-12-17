@@ -1,9 +1,5 @@
-export const host = 'localhost';
-export const port = 27017;
-export const database = 'music_player';
-
 export default {
-  host,
-  port,
-  database,
+  host: 'localhost',
+  port: 27017,
+  database: process.env.NODE_ENV === 'test' ? 'music_player_test' : 'music_player',
 };

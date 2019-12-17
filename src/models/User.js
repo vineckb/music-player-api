@@ -1,7 +1,7 @@
-import { Schema, model } from 'mongoose';
+import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
- 
-const UserSchema = new Schema({
+
+const UserSchema = new mongoose.Schema({
   name: String,
   email: String,
   password: String,
@@ -13,4 +13,4 @@ UserSchema.pre('save', function(next){
   next();
 });
 
-export default model('User', UserSchema);
+export default mongoose.model('User', UserSchema);
