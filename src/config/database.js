@@ -1,5 +1,5 @@
 export default {
   host: 'localhost',
   port: 27017,
-  database: 'music_player',
+  database: process.env.NODE_ENV === 'test' ? 'music_player_test' : 'music_player',
 };

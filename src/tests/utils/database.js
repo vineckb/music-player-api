@@ -1,29 +1,19 @@
 import mongoose from 'mongoose';
-import { MongoMemoryServer } from 'mongodb-memory-server';
+import config from '../../config/database.js';
 
-const mongod = new MongoMemoryServer();
-
-/**
- * Connect to the in-memory database.
- */
 export async function connect() {
-    const uri = await mongod.getConnectionString();
+  const uri = `mongodb://${config.host}:${config.port}/${config.database}`;
 
-    const mongooseOpts = {
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    };
+  const options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  };
 
-    await mongoose.connect(uri, mongooseOpts);
+  mongoose.connect(uri, options);
 }
 
-/**
- * Drop database, close the connection and stop mongod.
- */
 export async function closeDatabase() {
-    await mongoose.connection.dropDatabase();
     await mongoose.connection.close();
-    await mongod.stop();
 }
 
 /**

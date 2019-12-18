@@ -1,11 +1,11 @@
 import mongoose from 'mongoose';
-import dbHandler from './utils/database.js';
+import db from './utils/database.js';
 
-import UserModel from '../src/models/User.js';
+import UserModel from '../models/User.js';
 
-beforeAll(async () => await dbHandler.connect());
-afterEach(async () => await dbHandler.clearDatabase());
-afterAll(async () => await dbHandler.closeDatabase());
+beforeAll(async () => await db.connect());
+afterEach(async () => await db.clearDatabase());
+afterAll(async () => await db.closeDatabase());
 
 describe('create user test ', () => {
   it('can be created correctly', async () => {
