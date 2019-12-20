@@ -3,9 +3,9 @@
 /**
  * Module dependencies.
  */
-import app from '../src/bootstrap/app.js';
-import debuger from 'debug';
-import http from 'http';
+const app = require('../src/app.js');
+const debuger = require('debug');
+const http = require('http');
 
 const debug = debuger('api:server');
 

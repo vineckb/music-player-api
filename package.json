@@ -2,42 +2,38 @@
   "name": "api",
   "version": "0.0.0",
   "private": true,
-  "main": "./bin/www",
-  "type": "module",
+  "main": "./src/server",
   "scripts": {
-    "start": "nodemon ./bin/www",
-    "test": "cross-env NODE_ENV=test jest"
+    "start": "node ./src/server",
+    "dev": "nodemon ./src/server --ignore tests",
+    "pretest": "cross-env NODE_ENV=test sequelize db:migrate",
+    "test": "cross-env NODE_ENV=test jest",
+    "posttest": "cross-env NODE_ENV=test sequelize db:migrate:undo:all"
   },
   "dependencies": {
-    "bcrypt": "^3.0.7",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "cross-env": "^6.0.3",
     "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
     "express": "~4.16.1",
+    "factory-girl": "^5.0.4",
     "helmet": "^3.21.2",
     "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.8.0",
     "morgan": "~1.9.1",
-    "nodemon": "^2.0.2"
+    "mysql2": "^2.0.2",
+    "nodemon": "^2.0.2",
+    "sequelize": "^5.21.3",
+    "sqlite3": "^4.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",
     "@babel/preset-env": "^7.7.6",
     "babel-plugin-transform-default-import": "^1.0.0",
+    "faker": "^4.1.0",
     "jest": "^24.9.0",
+    "sequelize-cli": "^5.5.1",
     "supertest": "^4.0.2"
-  },
-  "jest": {
-    "testEnvironment": "node",
-    "coveragePathIgnorePatterns": [
-      "/node_modules/"
-    ],
-    "testPathIgnorePatterns": [
-      "/tests/utils",
-      "/tests/setup.js"
-    ],
-    "setupFilesAfterEnv": ["<rootDir>/src/tests/setup.js"],
-    "testMatch": [ "**/tests/**/*.[jt]s?(x)", "**/?(*.)+(spec|test).[jt]s?(x)" ]
   },
   "babel": {
     "presets": [
@@ -50,6 +46,8 @@
         }
       ]
     ],
-    "plugins": ["transform-default-import"]
+    "plugins": [
+      "transform-default-import"
+    ]
   }
 }
