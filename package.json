@@ -8,7 +8,8 @@
     "dev": "nodemon ./src/server --ignore tests",
     "pretest": "cross-env NODE_ENV=test sequelize db:migrate",
     "test": "cross-env NODE_ENV=test jest",
-    "posttest": "cross-env NODE_ENV=test sequelize db:migrate:undo:all"
+    "posttest": "cross-env NODE_ENV=test sequelize db:migrate:undo:all",
+    "lint": "./node_modules/.bin/eslint src/*.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -38,7 +39,7 @@
     "faker": "^4.1.0",
     "git-commit-msg-linter": "^2.3.11",
     "jest": "^24.9.0",
-    "pre-commit-with-lint": "^1.2.5",
+    "pre-commit": "^1.2.2",
     "prettier": "^1.19.1",
     "sequelize-cli": "^5.5.1",
     "supertest": "^4.0.2"
@@ -59,10 +60,8 @@
     ]
   },
   "pre-commit": {
-    "run": [],
-    "lint": {
-      "stylelint": "false",
-      "eslint": ".jsx?$"
-    }
+    "run": [
+      "lint"
+    ]
   }
 }

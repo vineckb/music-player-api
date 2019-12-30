@@ -6,10 +6,10 @@ module.exports = app => {
 
   fs.readdirSync(routesPath).forEach(async file => {
     if (file.match(/\.js$/) === null || file === 'index.js') return;
-      const name = file.replace('.js', '');
-      const router = await import(`./app/routes/${file}`);
+    const name = file.replace('.js', '');
+    // eslint-disable-next-line
+    const router = require(`./app/routes/${file}`);
 
-      app.use(`/${name}`, router.default);
-    }
-  );
-}
+    app.use(`/${name}`, router);
+  });
+};
