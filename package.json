@@ -30,9 +30,16 @@
     "@babel/core": "^7.7.5",
     "@babel/preset-env": "^7.7.6",
     "babel-plugin-transform-default-import": "^1.0.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-prettier": "^3.1.2",
     "faker": "^4.1.0",
     "git-commit-msg-linter": "^2.3.11",
     "jest": "^24.9.0",
+    "pre-commit-with-lint": "^1.2.5",
+    "prettier": "^1.19.1",
     "sequelize-cli": "^5.5.1",
     "supertest": "^4.0.2"
   },
@@ -50,5 +57,12 @@
     "plugins": [
       "transform-default-import"
     ]
+  },
+  "pre-commit": {
+    "run": [],
+    "lint": {
+      "stylelint": "false",
+      "eslint": ".jsx?$"
+    }
   }
 }

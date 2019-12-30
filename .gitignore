@@ -58,3 +58,5 @@ typings/
 .next
 
 yarn.lock
+
+tests/database.sqlite
